@@ -16,6 +16,14 @@
   <!-- Custom styles for this template -->
   <link href="css/scrolling-nav.css" rel="stylesheet">
 
+  <style>
+    .customoverlay {position:relative;bottom:50px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;}
+    .customoverlay:nth-of-type(n) {border:0; box-shadow:0px 1px 2px #888;}
+    .customoverlay a {display:block;text-decoration:none;color:#000;text-align:center;border-radius:6px;font-size:14px;font-weight:bold;overflow:hidden;background: #d95050;background: #d95050 url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/arrow_white.png) no-repeat right 14px center;}
+    .customoverlay .title {display:block;text-align:center;background:#fff;margin-right:35px;padding:10px 15px;font-size:14px;font-weight:bold;}
+    .customoverlay:after {content:'';position:absolute;margin-left:-12px;left:50%;bottom:-12px;width:22px;height:12px;background:url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/vertex_white.png')}
+    </style>
+
 </head>
 
 <body id="page-top">
@@ -119,25 +127,54 @@
     </div> -->
   </section>
 
-  <section id="map" class="bg-light">
-    <h2>오시는길</h2>
+  <section id="mapsec">
+    
+    <div >
+      <h2>오시는길</h2>
+    </div>
 
-    <div id="map" style="width:500px;height:400px;"></div>
+    <div id="map" style="height:400px;"></div>
 	  <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a8e6479daf9f5a0407ab58162f261521"></script>
     <script>
       var container = document.getElementById('map');
       var options = {
-        center: new kakao.maps.LatLng(33.450701, 126.570667),
-        level: 3
+        center: new kakao.maps.LatLng(37.1129771,126.8790718),
+        level: 4
       };
 
-      var map = new kakao.maps.Map(container, options);
+    var map = new kakao.maps.Map(container, options);
+
+    var markerPosition  = new kakao.maps.LatLng(37.1129771,126.8790718); 
+    
+    var marker = new kakao.maps.Marker({
+        position: markerPosition,
+        map: map
+    });
+
+    var content = '<div class="customoverlay">' +
+    '  <a href="http://kko.to/sqWF9cxDB" target="_blank">' +
+    '    <span class="title">원CNS</span>' +
+    '  </a>' +
+    '</div>';
+
+    var position = new kakao.maps.LatLng(37.1129771,126.87907188);  
+
+    var customOverlay = new kakao.maps.CustomOverlay({
+        map: map,
+        position: position,
+        content: content,
+        yAnchor: 1 
+    });
+
     </script>
 
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h3>경기도 화성시 팔탄면 3.1 만세로  751</h3>
+          <br>
+          <p class="lead">오시는 길</p>
+          <br>
+          <p class="lead">경기도 화성시 팔탄면 3.1 만세로 751</p>
         </div>
       </div>
     </div>
@@ -148,9 +185,9 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-8 mx-auto">
-          <h3>email: onecns2020@naver.com</h3>
-          <h3>전화: 031-8047-0126</h3>
-          <h3>펙스: 031-8047-0127 </h3>
+          <p class="lead">email: onecns2020@naver.com</p>
+          <p class="lead">전화: 031) 8047-0126</p>
+          <p class="lead">팩스: 031) 8047-0127 </p>
           <p class="lead"></p>
         </div>
       </div>
@@ -160,7 +197,8 @@
   <!-- Footer -->
   <footer class="py-5 bg-dark">
     <div class="container">
-      <p class="m-0 text-center text-white">Copyright &copy; Your Website 2020</p>
+      <p class="m-0 text-center text-white">(18578) 경기도 화성시 팔탄면 3.1 만세로 751, 751, 3.1manse-ro, Paltan-myeon, Hwaseong-si, Gyeonggi-do, Republic of Korea</p>
+      <p class="m-0 text-center text-white">주식회사 원씨엔에스 onecns.kr </p>
     </div>
     <!-- /.container -->
   </footer>
